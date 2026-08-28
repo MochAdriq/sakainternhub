@@ -1,59 +1,138 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 Saka InternHub
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Saka InternHub** adalah platform portofolio dan verifikasi magang modern yang dibangun dengan menggunakan *stack* teknologi mutakhir. Aplikasi ini dirancang untuk mewadahi mahasiswa magang dalam memamerkan karya, dokumentasi, dan sertifikat mereka yang telah diverifikasi secara resmi oleh mentor terkait.
 
-## About Laravel
+Aplikasi ini menggunakan pendekatan **Serverless**, memungkinkan *deployment* gratis tanpa pusing memikirkan infrastruktur fisik!
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🚀 Teknologi yang Digunakan
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*   **Backend:** Laravel 11 (PHP 8.2+)
+*   **Frontend:** React.js dengan Inertia.js (Single Page Application)
+*   **Styling:** Tailwind CSS (dengan komponen modern)
+*   **Database:** TiDB Serverless (MySQL Compatible)
+*   **Storage (Asset/File):** Cloudinary
+*   **Hosting / Deployment:** Vercel
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Panduan Instalasi Lokal (Development)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Untuk menjalankan aplikasi ini di komputer lokal, ikuti langkah-langkah berikut:
 
-## Laravel Sponsors
+### 1. Prasyarat Sistem
+Pastikan komputer Anda sudah terinstal:
+*   [PHP](https://www.php.net/downloads) (Minimal versi 8.2)
+*   [Composer](https://getcomposer.org/)
+*   [Node.js](https://nodejs.org/) & NPM
+*   [Git](https://git-scm.com/)
+*   MySQL/MariaDB Lokal (seperti XAMPP/Laragon) untuk testing lokal.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2. Kloning Repository & Instalasi
+Buka terminal dan jalankan perintah berurutan:
+```bash
+git clone https://github.com/MochAdriq/sakainternhub.git
+cd sakainternhub
 
-### Premium Partners
+# Install dependensi Backend
+composer install
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Install dependensi Frontend
+npm install
+```
 
-## Contributing
+### 3. Konfigurasi Environment (`.env`)
+Salin file `.env.example` menjadi `.env`:
+```bash
+cp .env.example .env
+```
+Generate *Application Key* Laravel:
+```bash
+php artisan key:generate
+```
+Sesuaikan konfigurasi database lokal Anda di dalam file `.env`:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nama_database_lokal_anda
+DB_USERNAME=root
+DB_PASSWORD=
+```
+*(Catatan: Buat database kosong terlebih dahulu di phpMyAdmin/Laragon dengan nama yang sesuai).*
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Migrasi & Seeding Database
+Jalankan perintah ini untuk membangun struktur tabel sekaligus mengisi data (dummy) bawaan:
+```bash
+php artisan migrate:fresh --seed
+```
 
-## Code of Conduct
+### 5. Jalankan Aplikasi
+Anda perlu menjalankan **dua terminal** secara bersamaan:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Terminal 1 (Menjalankan server PHP):
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+Terminal 2 (Menjalankan Vite untuk React):
+```bash
+npm run dev
+```
+Buka browser dan akses **`http://localhost:8000`**.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## ☁️ Panduan Deployment (Serverless / Production)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Aplikasi ini sudah dikonfigurasi sepenuhnya untuk berjalan di lingkungan Serverless **Vercel**, dipadukan dengan **TiDB** dan **Cloudinary** agar 100% gratis.
+
+### 1. Persiapan Layanan Pihak Ketiga
+1.  **TiDB Serverless (Database):**
+    *   Daftar di [TiDB Cloud](https://tidbcloud.com) dan buat cluster gratis (Starter).
+    *   Ambil detail host, port (4000), username, dan password.
+2.  **Cloudinary (Penyimpanan File):**
+    *   Daftar di [Cloudinary](https://cloudinary.com).
+    *   Ambil `CLOUDINARY_URL` dari Dashboard.
+3.  **Vercel (Hosting Aplikasi):**
+    *   Pastikan Anda sudah menginstal **Vercel CLI** (`npm i -g vercel`).
+
+### 2. Konfigurasi Environment Vercel
+Tambahkan *environment variables* berikut ke dalam pengaturan Vercel (bisa melalui web dashboard Vercel atau menggunakan perintah `vercel env add`):
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:KUNCI_APP_ANDA_DISINI
+
+# Konfigurasi Database TiDB
+DB_CONNECTION=mysql
+DB_HOST=gateway01.ap-southeast-1.prod.aws.tidbcloud.com
+DB_PORT=4000
+DB_DATABASE=test
+DB_USERNAME=username.root
+DB_PASSWORD=password_tidb_anda
+
+# Konfigurasi Cloudinary
+FILESYSTEM_DISK=cloudinary
+CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
+```
+*(Catatan: Vercel sudah menggunakan CA Certificate bawaan, dan konfigurasi SSL TiDB sudah ditangani di `config/database.php`).*
+
+### 3. Eksekusi Deployment
+Cukup jalankan perintah ini dari terminal lokal Anda untuk melempar kode langsung ke Production Vercel:
+```bash
+vercel --prod --yes
+```
+
+---
+
+## 📂 Struktur Penting
+*   `api/index.php` & `vercel.json` - File vital untuk konfigurasi serverless Vercel (menggantikan Nginx/Apache).
+*   `bootstrap/app.php` - Disesuaikan agar direktori temporer seperti *cache* dan *logs* di-redirect ke `/tmp/storage` khusus saat berjalan di lingkungan Vercel (karena Vercel bersifat *Read-Only*).
+*   `app/Providers/AppServiceProvider.php` - Terdapat pemaksaan *scheme* HTTPS (`URL::forceScheme('https')`) untuk mengatasi error *Mixed Content* akibat Vercel Proxy.
+
+---
+
+> Dibuat dengan 💻 dan ☕ untuk Saka Inovasi Network.
