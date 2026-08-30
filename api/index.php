@@ -11,6 +11,7 @@ $dirs = [
     $framework_dir.'/sessions',
     $framework_dir.'/testing',
     $bootstrap_dir,
+    '/tmp/storage/logs',
 ];
 
 foreach ($dirs as $dir) {
