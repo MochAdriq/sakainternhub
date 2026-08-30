@@ -60,7 +60,8 @@ class DummyDataSeeder extends Seeder
             'university' => 'Universitas Teknologi',
             'study_program' => 'Teknik Informatika',
             'skills' => ['Laravel', 'React', 'Tailwind'],
-            'public_slug' => Str::slug($student1->name . ' ' . Str::random(4)),
+            'public_slug' => 'ahmad-mahasiswa',
+            'is_portfolio_published' => true,
         ]);
         Internship::firstOrCreate(['student_user_id' => $student1->id], [
             'period_id' => $period->id,
@@ -80,7 +81,8 @@ class DummyDataSeeder extends Seeder
             'university' => 'Institut Seni',
             'study_program' => 'Desain Komunikasi Visual',
             'skills' => ['Figma', 'UI/UX', 'Illustrator'],
-            'public_slug' => Str::slug($student2->name . ' ' . Str::random(4)),
+            'public_slug' => 'diana-desainer',
+            'is_portfolio_published' => true,
         ]);
         Internship::firstOrCreate(['student_user_id' => $student2->id], [
             'period_id' => $period->id,
